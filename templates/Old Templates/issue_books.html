@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Book</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>  
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />  
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Frappe Library</h1>
+    <div class="container">
+        <form action="/issueBook" name="/issueBook" method="post">
+        <div class="input-group">
+            <label for="memberid">Member ID:</label>
+            <input type="text" name = "memberid" id="memberid" placeholder="Enter Member ID">
+        </div>
+        <!-- <div class="input-group">
+            <label for="membername">Member Name:</label>
+            <input type="text" name = "membername" id="membername" placeholder="Enter Member Name">
+        </div>
+        <div class="input-group">
+            <label for="bookid">Book ID:</label>
+            <input type="text" name = "bookid" id="bookid" placeholder="Enter Book ID">
+        </div> -->
+        <div class="input-group">
+            <label for="bookname">Book Name:</label>
+            <input type="text" name = "bookname" id="bookname" placeholder="Enter Book Name">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+
+    <script>
+        $( function() {
+            console.log("Running Function");
+            
+        var availableMemberID = [
+            {% for id in memberID %}
+                "{{id}}",
+            {% endfor %}
+        ];
+        var availableMemberName = [
+            {% for name in memberName %}
+                "{{name}}",
+            {% endfor %}
+        ];
+        var availableBookID = [
+            {% for book_id in bookID %}
+                "{{book_id}}",
+            {% endfor %}
+        ];
+        var availableBookName = [
+            {% for book_name in bookName %}
+                "{{book_name}}",
+            {% endfor %}
+        ];
+        $( "#memberid" ).autocomplete({
+            source: availableMemberID
+        });
+        $( "#membername" ).autocomplete({
+            source: availableMemberName
+        });
+        $( "#bookid" ).autocomplete({
+            source: availableBookID
+        });
+        $( "#bookname" ).autocomplete({
+            source: availableBookName
+        });
+        } );
+    </script>
+</body>
+</html>

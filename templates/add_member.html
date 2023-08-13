@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Member</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>  
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />  
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="./static/assets/css/default.css">
+</head>
+<body id="html">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+          Frappe Library
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/getBooks">Add Books </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/issueBookPage">Issue Books</a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link" href="/returnBookPage">Return Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/searchpage">Search Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/addMemberPage">Add Member</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/getMembers">Get All Member Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/searchIssuedBooksPage">Search Issued Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/displayDues">Check Dues</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h1 style="color: aliceblue;">Add Member</h1>
+    <div class="padding-top">
+    <div class="container">
+        <form action="/addMember" name="/addMember" method="post" onsubmit="return validateForm()">
+            <label for="basic-url">Enter The Following Details</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Member Name</span>
+                </div>
+                <input type="text" class="form-control" name="membername" id="membername" aria-describedby="basic-addon3" placeholder="Enter Name">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Member Age</span>
+                </div>
+                <input type="text" class="form-control" name="memberage" id="memberage" aria-describedby="basic-addon3" placeholder="Enter Age">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Member Address</span>
+                </div>
+                <input type="text" class="form-control" name="memberaddress" id="memberaddress" aria-describedby="basic-addon3" placeholder="Enter Address">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Member Phone Number</span>
+                </div>
+                <input type="number" class="form-control" name="memberphonenumber" id="memberphonenumber" aria-describedby="basic-addon3" minlength="10" maxlength="10" placeholder="Enter Phone Number">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script>
+        function validateForm() {
+            var memberName = document.getElementById("membername").value;
+            var memberAge = document.getElementById("memberage").value;
+            var memberAddress = document.getElementById("memberaddress").value;
+            var memberPhoneNumber = document.getElementById("memberphonenumber").value;
+            
+            if (memberName === "" || memberAge === "" || memberAddress === "" || memberPhoneNumber === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
+            if (memberPhoneNumber.length < 10) {
+                alert("Phone number should be 10 digits.");
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

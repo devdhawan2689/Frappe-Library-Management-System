@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frappe Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    #html {
+      min-height:100%;
+      background:linear-gradient(0deg, rgba(61, 59, 60, 0.856), rgba(61, 59, 60, 0.856)), url('https://images.pexels.com/photos/1290141/pexels-photo-1290141.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-size:cover;
+    }
+    #grad1 {
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px; /* Add some margin for spacing */
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .facebook {
+      display: flex;
+      align-items: center;
+    }
+
+    .button-container button {
+      display: inline-block;
+    }
+
+    .padding-top{
+      padding-top: 5%;
+    }
+  </style>
+</head>
+<body id="html", onload="alertCheck()">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">
+        Frappe Library
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/getBooks">Add Books </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/issueBookPage">Issue Books</a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link" href="/returnBookPage">Return Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/searchpage">Search Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/addMemberPage">Add Member</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/getMembers">Get All Member Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/searchIssuedBooksPage">Search Issued Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/displayDues">Check Dues</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="padding-top" style="color: aliceblue;">
+    <div class="container text-center">
+      <h1 class="display-4">Welcome to Frappe Library Management Portal</h1>
+      <p class="lead">Empower your library management with our advanced features</p>
+      <hr class="my-4">
+      <p>This portal provides you with a suite of powerful tools for efficient management of your library's books and members. From adding and searching for books to managing members and checking dues, our portal has you covered.</p>
+      <p>Use the navigation bar above to explore different features and take your library management to the next level.</p>
+    </div>
+  </div>
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  function alertCheck(){
+    if ("{{ alert }}" == "True"){
+  alert("Following Members have Exceeded the Due Date \n" + "{{ alertData }}");
+    }
+    else{
+      console.log("No Need To Alert");
+    }
+}
+</script>
+</body>
+</html>

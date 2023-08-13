@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="number"] {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Books</h1>
+
+    <form id="bookForm" onclick="fetchRowsFromTable()" method="post">
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    {% for column in columnNames %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in values %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                        <td>
+                            <input type="number" name="quantity[]" value="0" min="0">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" value="Submit">
+    </form>
+
+    <script>
+        function fetchRowsFromTable() {
+            const table = document.getElementById("bookTable");
+            const rows = table.getElementsByTagName("tr");
+
+            const data = [];
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const cells = row.getElementsByTagName("td");
+                const rowData = [];
+                for (let j = 0; j < cells.length; j++) {
+                    rowData.push(cells[j].innerText);
+                }
+                const quantityInput = row.querySelector("input[name='quantity[]']");
+                rowData.push(quantityInput.value);
+                data.push(rowData);
+            }
+
+            return data;
+        }
+
+        document.getElementById("bookForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const tableData = fetchRowsFromTable();
+            console.log(tableData);
+            // Send data to the server using fetch API
+            fetch("/addBooks", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(tableData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok.");
+                }
+                // Process the response from the server, if needed.
+                return response.json();
+            })
+            .then(data => {
+                console.log("Server response:", data);
+                // Do something with the server response.
+            })
+            .catch(error => {
+                console.error("Error while sending data to server:", error);
+            });
+        });
+    </script>
+</body>
+</html>

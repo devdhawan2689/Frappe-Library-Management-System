@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form name="searchBook" action="/searchBook" method="post">
+        <label for="searchOption">Select search option:</label>
+        <select id="searchOption" name="searchOption">
+            <option value="Book Name">Book Name</option>
+            <option value="ID">ID</option>
+            <option value="Author">Author</option>
+            <option value="ISBN">ISBN</option>
+            <option value="ISBN13">ISBN-13</option>
+            <option value="Language Code">Language Code</option>
+        </select>
+        <label for="searchTerm">Enter search term:</label>
+        <input type="text" id="searchTerm" name="searchTerm" placeholder="Enter your search term">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

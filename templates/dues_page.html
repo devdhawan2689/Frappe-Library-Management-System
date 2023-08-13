@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dues</title>
+</head>
+<body>
+    <h1>Current Dues</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                {% for column in tablesData.columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in tablesData.iterrows() %}
+                <tr>
+                    {% for value in row[1] %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
