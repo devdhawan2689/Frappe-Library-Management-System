@@ -15,6 +15,7 @@ The Flask Website Does the Following Functions -
 
 For Each Request the Flask Server Sends Request to the FrappeAPI.py File. 
 This File is responsible for interacting with the Frappe API and the Database for all operations. 
+
 The reason to create seperate file for operatins is to make the code easier to run and understand. 
 
 The CSV Files, 
@@ -22,6 +23,7 @@ The CSV Files,
 2. Library_Dues_Database.csv
 3. Library_Issue_Database.csv
 4. Members_Database.csv
+
 Are Used as The Database for the Flask Website.
 
 (The Same can be done on an SQL Server or by using the SQLite3 Module for Python)
