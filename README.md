@@ -14,6 +14,7 @@ The Flask Website Does the Following Functions -
 8. Check Dues
 
 For Each Request the Flask Server Sends Request to the FrappeAPI.py File. 
+
 This File is responsible for interacting with the Frappe API and the Database for all operations. 
 
 The reason to create seperate file for operatins is to make the code easier to run and understand. 
