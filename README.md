@@ -17,7 +17,7 @@ For Each Request the Flask Server Sends Request to the FrappeAPI.py File.
 
 This File is responsible for interacting with the Frappe API and the Database for all operations. 
 
-The reason to create seperate file for operatins is to make the code easier to run and understand. 
+The reason to create seperate file for operations is to make the code easier to run and understand. 
 
 The CSV Files, 
 1. Library_Books_Database.csv
